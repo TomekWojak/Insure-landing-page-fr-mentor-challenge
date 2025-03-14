@@ -583,7 +583,6 @@ img {
   }
   .footer__list {
     width: 33%;
-    text-align: left;
   }
   .footer-bg-mobile {
     display: none;
@@ -668,6 +667,10 @@ img {
   }
   .footer__list {
     width: 25%;
+    text-align: left;
+  }
+  .footer__social {
+    gap: 2em;
   }
 }
 @media (1200px <= width) {

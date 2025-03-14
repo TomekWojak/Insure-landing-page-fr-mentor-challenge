@@ -541,7 +541,7 @@ img {
         &__head {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-between
         }
         &__social {
             margin: 0;
@@ -674,7 +674,6 @@ img {
 
         &__list {
             width: 33%;
-            text-align: left;
         }
         &-bg-mobile {
             display: none;
@@ -771,6 +770,10 @@ img {
     .footer {
         &__list {
             width: 25%;
+            text-align: left;
+        }
+        &__social {
+            gap: 2em;
         }
     }
 
