@@ -52,7 +52,7 @@ img {
   background-color: hsl(270, 9%, 17%);
   overflow: hidden;
   transform: translateX(200%);
-  transition: transform 0.5s;
+  transition: transform 0.4s cubic-bezier(0.65, 0.05, 0.36, 1);
   z-index: 90;
 }
 .nav__links-mobile.active {
@@ -69,6 +69,7 @@ img {
   text-decoration: none;
   color: hsl(0, 0%, 98%);
   font-size: 2.2rem;
+  letter-spacing: 1px;
   transition: color 0.3s, background-color 0.3s;
 }
 .nav__links-mobile .nav__link::before {
@@ -78,11 +79,12 @@ img {
   left: 50%;
   transform: translateX(-50%) scale(0);
   bottom: 0.8em;
-  width: 10%;
+  width: 15%;
   height: 2px;
+  border-radius: 20px;
   background-color: hsl(0, 0%, 98%);
   transform-origin: center;
-  transition: transform 0.3s;
+  transition: transform 0.4s;
 }
 .nav__links-mobile .nav__link:hover::before {
   transform: translateX(-50%) scale(1);
@@ -92,7 +94,7 @@ img {
   color: hsl(270, 9%, 17%);
 }
 .nav__links-mobile .nav__link:nth-child(4) {
-  max-width: 300px;
+  max-width: 350px;
   margin-block-start: 0.5em;
   padding: 0.6em;
   border: 2px solid hsl(0, 0%, 98%);
@@ -145,7 +147,7 @@ img {
 .header {
   position: relative;
   background-color: hsl(256, 26%, 20%);
-  overflow: hidden;
+  z-index: 0;
 }
 .header__img {
   display: block;
@@ -184,6 +186,7 @@ img {
   font-weight: 400;
   font-size: 4rem;
   color: hsl(0, 0%, 98%);
+  line-height: 45px;
 }
 .header__text {
   margin: 1em 0 2em;
@@ -217,7 +220,7 @@ img {
 .cards__title {
   position: relative;
   margin-block-end: 0.8em;
-  font-size: 4rem;
+  font-size: 3.6rem;
   font-family: "DM Serif Display", sans-serif;
   text-align: center;
   font-weight: 400;
@@ -250,8 +253,57 @@ img {
   font-family: "Karla", sans-serif;
 }
 
+.more {
+  padding: 2em;
+}
+.more-bg {
+  position: absolute;
+  z-index: -1;
+}
+.more-bg-desktop {
+  display: none;
+}
+.more-bg-mobile {
+  top: 0;
+  right: 0;
+}
+.more__box {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  position: relative;
+  padding: 8em 2em;
+  text-align: center;
+  background-color: hsl(256, 26%, 20%);
+  color: hsl(0, 0%, 98%);
+  z-index: 0;
+  overflow: hidden;
+}
+.more__title {
+  font-size: 4rem;
+  font-family: "DM Serif Display", sans-serif;
+  font-weight: 400;
+  line-height: 45px;
+}
+.more__btn {
+  padding: 0.9em 2.5em;
+  margin-block-start: 2em;
+  text-transform: uppercase;
+  background: none;
+  border: 2px solid hsl(0, 0%, 98%);
+  font-family: "Karla", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: hsl(0, 0%, 98%);
+  cursor: pointer;
+  transition: color 0.3s, background-color 0.3s;
+}
+.more__btn:hover {
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(270, 9%, 17%);
+}
+
 .nav__burger-btn[aria-expanded=true] .nav__burger-btn-bar--top {
-  animation: top-middle 0.5s forwards;
+  animation: top-middle 0.4s forwards;
 }
 
 .nav__burger-btn[aria-expanded=true] .nav__burger-btn-bar--middle {
@@ -259,11 +311,11 @@ img {
 }
 
 .nav__burger-btn[aria-expanded=true] .nav__burger-btn-bar--bottom {
-  animation: bottom-middle 0.5s forwards;
+  animation: bottom-middle 0.4s forwards;
 }
 
 .nav__burger-btn[aria-expanded=false] .nav__burger-btn-bar--top {
-  animation: top-back 0.5s forwards;
+  animation: top-back 0.4s forwards;
 }
 
 .nav__burger-btn[aria-expanded=false] .nav__burger-btn-bar--middle {
@@ -271,7 +323,7 @@ img {
 }
 
 .nav__burger-btn[aria-expanded=false] .nav__burger-btn-bar--bottom {
-  animation: bottom-back 0.5s forwards;
+  animation: bottom-back 0.4s forwards;
 }
 
 @keyframes bottom-middle {
@@ -324,9 +376,13 @@ img {
   }
   .header__title {
     font-size: 4.6rem;
+    line-height: 50px;
   }
   .header__btn {
     font-size: 1.5rem;
+  }
+  .cards {
+    padding: 20em 2em 10em;
   }
   .cards__title {
     margin-block-end: 1.2em;
@@ -338,6 +394,9 @@ img {
   }
   .cards__card {
     width: 50%;
+  }
+  .more__title {
+    font-size: 4.2rem;
   }
 }
 @media (700px <= width) {
@@ -408,6 +467,33 @@ img {
   .header__pattern--right {
     display: none;
   }
+  .cards__title {
+    font-size: 5rem;
+  }
+}
+@media (768px <= width) {
+  .more__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6em 4em;
+  }
+  .more__title {
+    font-size: 4.5rem;
+  }
+  .more__text {
+    text-align: left;
+    width: 50%;
+  }
+  .more-bg-mobile {
+    display: none;
+  }
+  .more-bg-desktop {
+    display: block;
+    height: 100%;
+    top: 0;
+    right: 0;
+  }
 }
 @media (992px <= width) {
   .header {
@@ -425,6 +511,7 @@ img {
     left: 0;
     width: 150px;
     height: 2px;
+    border-radius: 20px;
     background-color: hsl(273, 4%, 51%);
   }
   .header__pattern--left {
@@ -437,22 +524,47 @@ img {
     display: block;
     position: absolute;
   }
+  .header__pattern-desktop--left {
+    bottom: 0;
+    transform: translateY(50%);
+    left: 0;
+    z-index: -1;
+  }
   .header__pattern-desktop--right {
-    top: -10em;
-    right: -10em;
+    top: 0;
+    right: 0;
+    width: min(500px, 30%);
   }
   .header__img {
     position: relative;
-    top: 5em;
+    top: 12em;
   }
-  .cards__pattern-desktop {
-    position: absolute;
-    display: block;
+  .cards {
+    padding: 30em 2em 15em;
   }
-  .cards__pattern-desktop--left {
-    top: 0em;
+  .cards__box {
+    justify-content: space-between;
+  }
+  .cards__card {
+    width: 33%;
+    text-align: left;
+  }
+  .cards__title {
+    text-align: left;
+  }
+  .cards__title::before {
     left: 0;
-    transform: translateY(-50%);
+    top: -40px;
+    transform: translateX(0);
+  }
+  .cards__body-title {
+    margin: 1em 0 0.8em;
+  }
+  .more__box {
+    padding: 7em;
+  }
+  .more__title {
+    font-size: 4.8rem;
   }
 }
 @media (1200px <= width) {
@@ -460,23 +572,21 @@ img {
     gap: 2em;
     font-size: 1.4rem;
   }
-  .header__pattern-desktop--right {
-    top: 0;
-    right: 0;
-  }
   .header__title {
-    font-size: 6rem;
+    font-size: 6.9rem;
+    line-height: 60px;
   }
   .header__title::before {
-    top: -60px;
+    top: -40px;
   }
   .header__text {
     line-height: 28px;
+    margin: 1.5em 0 2em;
   }
   .header__btn {
     font-size: 1.7rem;
   }
-  .header__img {
-    top: 12em;
+  .more__title {
+    font-size: 5.2rem;
   }
 }/*# sourceMappingURL=style.css.map */
