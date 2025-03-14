@@ -583,6 +583,16 @@ img {
   }
   .footer__list {
     width: 33%;
+    text-align: left;
+  }
+  .footer-bg-mobile {
+    display: none;
+  }
+  .footer-bg-desktop {
+    display: block;
+    left: 0;
+    top: 0;
+    width: 45%;
   }
 }
 @media (992px <= width) {

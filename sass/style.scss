@@ -674,6 +674,16 @@ img {
 
         &__list {
             width: 33%;
+            text-align: left;
+        }
+        &-bg-mobile {
+            display: none;
+        }
+        &-bg-desktop {
+            display: block;
+            left: 0;
+            top: 0;
+            width: 45%;
         }
     }
 }
