@@ -1,0 +1,207 @@
+@use './_colors' as *;
+
+$headingFf: 'DM Serif Display', sans-serif;
+$bodyFf: 'Karla', sans-serif;
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}    
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+body {
+    background-color: $veryLightGray;
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    font-style: italic;
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 2.5em 2em;
+    background-color: $veryLightGray;
+    z-index: 100;
+
+        .wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+    &__links-desktop {
+        display: none;
+    }
+    &__links-mobile {
+        position: relative;
+        top: 8em;
+        height: 100vh;
+        width: 100%;
+        padding: 2em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: $veryDarkViolet;
+        overflow: hidden;
+        transform: translateX(200%);
+        transition: transform .5s;
+        z-index: 0;
+
+        &.active {
+            transform: translateX(0);
+        }
+
+        .nav__link {
+            text-align: center;
+            display: block;
+            width: 100%;
+            font-family: $bodyFf;
+            padding: 1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: $veryLightGray;
+            font-size: 2.5rem;
+
+
+            &:nth-child(4) {
+                padding: .7em;
+                border: 2px solid $veryLightGray;
+            }
+
+        }
+    }
+
+    &__mobile-bg {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        bottom: 5%;
+        inset-inline: 0;
+        z-index: -1;
+    }
+    
+
+    &__burger-btn {
+        display: block;
+        padding: 0.5em;
+        cursor: pointer;
+        background: none;
+        border: 2px solid $veryDarkViolet;
+    }
+    &__burger-btn-box {
+        position: relative;
+        width: 20px;
+        height: 20px;
+    }
+    &__burger-btn-bar {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: $veryDarkViolet;
+        border-radius: 20px;
+
+        &--top {
+            top: 3px;
+        }
+        &--middle {
+            top: 9px;
+            transition: opacity .5s;
+        }
+        &--bottom {
+            top: 15px;
+        }
+    }
+}
+
+
+.nav__burger-btn[aria-expanded='true'] .nav__burger-btn-bar--top {
+    animation: top-middle .5s forwards;
+}
+
+.nav__burger-btn[aria-expanded='true'] .nav__burger-btn-bar--middle {
+    opacity: 0;
+}
+
+.nav__burger-btn[aria-expanded='true'] .nav__burger-btn-bar--bottom {
+    animation: bottom-middle .5s forwards;
+}
+
+
+.nav__burger-btn[aria-expanded='false'] .nav__burger-btn-bar--top {
+    animation: top-back .5s forwards;
+}
+
+.nav__burger-btn[aria-expanded='false'] .nav__burger-btn-bar--middle {
+    opacity: 1;
+}
+
+.nav__burger-btn[aria-expanded='false'] .nav__burger-btn-bar--bottom {
+    animation: bottom-back .5s forwards;
+}
+
+
+
+
+@keyframes bottom-middle {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    100% {
+        transform: translateY(-6px) rotate(-225deg);
+    }
+}
+
+@keyframes top-middle {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(6px);
+    }
+    100% {
+        transform: translateY(6px) rotate(225deg);
+    }
+}
+
+@keyframes bottom-back {
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    0% {
+        transform: translateY(-6px) rotate(-225deg);
+    }
+}
+
+@keyframes top-back {
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(6px);
+    }
+    0% {
+        transform: translateY(6px) rotate(225deg);
+    }
+}
