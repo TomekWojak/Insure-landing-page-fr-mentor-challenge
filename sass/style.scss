@@ -22,7 +22,6 @@ html {
 
 body {
     background-color: $veryLightGray;
-    overflow-x: hidden;
 }
 
 img {
@@ -31,7 +30,7 @@ img {
 }
 
 .nav {
-    position: fixed;
+    position: sticky;
     width: 100%;
     top: 0;
     padding: 2.5em 2em;
@@ -48,7 +47,7 @@ img {
         display: none;
     }
     &__links-mobile {
-        position: relative;
+        position: fixed;
         top: 8em;
         height: 100vh;
         width: 100%;
@@ -60,13 +59,14 @@ img {
         overflow: hidden;
         transform: translateX(200%);
         transition: transform .5s;
-        z-index: 0;
+        z-index: 90;
 
         &.active {
             transform: translateX(0);
         }
 
         .nav__link {
+            position: relative;
             text-align: center;
             display: block;
             width: 100%;
@@ -76,11 +76,40 @@ img {
             text-decoration: none;
             color: $veryLightGray;
             font-size: 2.5rem;
+            transition: color .3s, background-color .3s;
 
-
+            &::before {
+                display: block;
+                content: '';
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%) scale(0);
+                bottom: .8em;
+                width: 10%;
+                height: 2px;
+                background-color: $veryLightGray;
+                transform-origin: center;
+                transition: transform .3s;
+            }
+            &:hover::before {
+                transform: translateX(-50%) scale(1);
+            }
+            &:hover:nth-child(4) {
+                background-color: $veryLightGray;
+                color: $veryDarkViolet;
+            }
             &:nth-child(4) {
-                padding: .7em;
+                max-width: 300px;
+                margin-block-start: .5em;
+                padding: .6em;
                 border: 2px solid $veryLightGray;
+
+                &::before {
+                    display: none;
+                }
+            }
+            &:first-child {
+                padding: 2em 1em 1em;
             }
 
         }
@@ -128,6 +157,72 @@ img {
         }
     }
 }
+
+
+// HEADER
+
+.header {
+    background-color: $darkViolet;
+    &__img {
+        width: 100%;
+    }
+    &__pattern {
+        position: absolute;
+        z-index: -1;
+
+        &--left {
+            top: 0;
+            left: 0;
+        }
+        &--right {
+            bottom: 0;
+            right: 0;
+            transform: translateY(50%);
+        }
+    }
+    &__pattern-desktop {
+        display: none;
+    }
+
+    &__box {
+        position: relative;
+        padding: 7em 2em;
+        text-align: center;
+        z-index: 0;
+    }
+    &__title {
+        font-family: $headingFf;
+        font-weight: 400;
+        font-size: 4rem;
+        color: $veryLightGray;
+    }
+    &__text {
+        margin: 1em 0 2em;
+        font-size: 1.7rem;
+        font-family: $bodyFf;
+        font-weight: 400;
+        color: hsla(0, 0%, 98%, 0.692);
+        line-height: 25px;
+    }
+    &__btn {
+        padding: .8em 2.5em;
+        text-transform: uppercase;
+        color: $veryLightGray;
+        background: none;
+        border: 2px solid $veryLightGray;
+        font-family: $bodyFf;
+        font-size: 1.4rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: color .3s, background-color .3s;
+
+        &:hover {
+            background-color: $veryLightGray;
+            color: $veryDarkViolet;
+        }
+    }
+}
+
 
 
 .nav__burger-btn[aria-expanded='true'] .nav__burger-btn-bar--top {
@@ -203,5 +298,80 @@ img {
     }
     0% {
         transform: translateY(6px) rotate(225deg);
+    }
+}
+
+
+// ================== MEDIA =====================
+
+
+@media(576px <= width) {
+    .nav {
+        &__mobile-bg {
+            bottom: -15%;
+        }
+    }
+    .header {
+        &__title {
+            font-size: 4.6rem;
+        }
+        &__btn {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+
+@media(768px <= width) {
+    .nav {
+        &__links-mobile {
+            display: none;
+        }
+        &__burger-btn {
+            display: none;
+        }
+        &__links-desktop {
+            display: flex;
+            gap: 1em;
+
+            .nav__link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                padding: 1em;
+                text-transform: uppercase;
+                text-decoration: none;
+                font-family: $bodyFf;
+                color: $grayedViolet;
+                font-size: 1.3rem;
+                font-weight: 700;
+                letter-spacing: 1px;
+                transition: color .3s, background-color .3s;
+
+                &:hover {
+                    color: $veryDarkViolet;
+                }
+
+                &:nth-child(4) {
+                    padding: .6em 2em;
+                    border: 2px solid $veryDarkViolet; 
+                    color: $veryDarkViolet;
+                    
+                    &:hover {
+                        background-color: $veryDarkViolet;
+                        color: $veryLightGray;
+                    }
+                }
+            }
+        }
+    }
+    .header {
+        &__title {
+            font-size: 4.6rem;
+        }
+        &__btn {
+            font-size: 1.5rem;
+        }
     }
 }
