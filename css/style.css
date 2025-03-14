@@ -20,7 +20,6 @@ body {
 }
 
 img {
-  display: block;
   font-style: italic;
 }
 
@@ -146,8 +145,10 @@ img {
 .header {
   position: relative;
   background-color: hsl(256, 26%, 20%);
+  overflow: hidden;
 }
 .header__img {
+  display: block;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -177,7 +178,6 @@ img {
   position: relative;
   padding: 8em 2em;
   text-align: center;
-  z-index: 0;
 }
 .header__title {
   font-family: "DM Serif Display", sans-serif;
@@ -208,6 +208,46 @@ img {
 .header__btn:hover {
   background-color: hsl(0, 0%, 98%);
   color: hsl(270, 9%, 17%);
+}
+
+.cards {
+  position: relative;
+  padding: 12em 0;
+}
+.cards__title {
+  position: relative;
+  margin-block-end: 0.8em;
+  font-size: 4rem;
+  font-family: "DM Serif Display", sans-serif;
+  text-align: center;
+  font-weight: 400;
+}
+.cards__title::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 1px;
+  background-color: hsl(273, 4%, 51%);
+  border-radius: 20px;
+}
+.cards__card {
+  text-align: center;
+  padding: 2em;
+}
+.cards__body-title {
+  margin: 1em 0 0.5em;
+  font-size: 2.5rem;
+  font-family: "DM Serif Display", sans-serif;
+  font-weight: 400;
+}
+.cards__text {
+  font-size: 1.7rem;
+  line-height: 25px;
+  color: hsl(273, 4%, 51%);
+  font-family: "Karla", sans-serif;
 }
 
 .nav__burger-btn[aria-expanded=true] .nav__burger-btn-bar--top {
@@ -287,6 +327,17 @@ img {
   }
   .header__btn {
     font-size: 1.5rem;
+  }
+  .cards__title {
+    margin-block-end: 1.2em;
+  }
+  .cards__box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cards__card {
+    width: 50%;
   }
 }
 @media (700px <= width) {
@@ -386,12 +437,6 @@ img {
     display: block;
     position: absolute;
   }
-  .header__pattern-desktop--left {
-    bottom: 0;
-    left: 0;
-    transform: translateY(50%);
-    z-index: -1;
-  }
   .header__pattern-desktop--right {
     top: -10em;
     right: -10em;
@@ -399,6 +444,15 @@ img {
   .header__img {
     position: relative;
     top: 5em;
+  }
+  .cards__pattern-desktop {
+    position: absolute;
+    display: block;
+  }
+  .cards__pattern-desktop--left {
+    top: 0em;
+    left: 0;
+    transform: translateY(-50%);
   }
 }
 @media (1200px <= width) {

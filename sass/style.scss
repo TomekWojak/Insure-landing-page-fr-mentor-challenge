@@ -25,7 +25,6 @@ body {
 }
 
 img {
-    display: block;
     font-style: italic;
 }
 
@@ -165,7 +164,10 @@ img {
 .header {
     position: relative;
     background-color: $darkViolet;
+    overflow: hidden;
+
     &__img {
+        display: block;
         width: 100%;
         object-fit: cover;
         object-position: center;
@@ -195,7 +197,6 @@ img {
         position: relative;
         padding: 8em 2em;
         text-align: center;
-        z-index: 0;
     }
     &__title {
         font-family: $headingFf;
@@ -231,7 +232,55 @@ img {
 }
 
 
+// SECTION CARDS
 
+.cards {
+    position: relative;
+    padding: 12em 0;
+
+    &__title {
+        position: relative;
+        margin-block-end: .8em;
+        font-size: 4rem;
+        font-family: $headingFf;
+        text-align: center;
+        font-weight: 400;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 1px;
+            background-color: $grayedViolet;
+            border-radius: 20px;
+        }
+    }
+
+    &__card {
+        text-align: center;
+        padding: 2em;
+    }
+
+    &__body-title {
+        margin: 1em 0 .5em;
+        font-size: 2.5rem;
+        font-family: $headingFf;
+        font-weight: 400;
+    }
+    &__text {
+        font-size: 1.7rem;
+        line-height: 25px;
+        color: $grayedViolet;
+        font-family: $bodyFf;
+    }
+}
+
+
+
+// ARIA
 .nav__burger-btn[aria-expanded='true'] .nav__burger-btn-bar--top {
     animation: top-middle .5s forwards;
 }
@@ -259,6 +308,7 @@ img {
 
 
 
+// ANIMATIONS
 
 @keyframes bottom-middle {
     0% {
@@ -324,6 +374,19 @@ img {
         }
         &__btn {
             font-size: 1.5rem;
+        }
+    }
+    .cards {
+        &__title {
+            margin-block-end: 1.2em;
+        }
+        &__box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        &__card {
+            width: 50%;
         }
     }
 }
@@ -440,12 +503,7 @@ img {
             display: block;
             position: absolute;
 
-            &--left {
-                bottom: 0;
-                left: 0;
-                transform: translateY(50%);
-                z-index: -1;
-            }
+ 
             &--right {
                 top: -10em;
                 right: -10em;
@@ -454,6 +512,19 @@ img {
         &__img {
             position: relative;
             top: 5em;
+        }
+    }
+    .cards {
+        &__pattern-desktop {
+            position: absolute;
+            display: block;
+
+            &--left {
+                top: 0em;
+                left: 0;
+                transform: translateY(-50%);
+              
+            }
         }
     }
 }
