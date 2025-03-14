@@ -215,7 +215,7 @@ img {
 
 .cards {
   position: relative;
-  padding: 12em 0;
+  padding: 12em 0 10em;
 }
 .cards__title {
   position: relative;
@@ -254,7 +254,7 @@ img {
 }
 
 .more {
-  padding: 2em;
+  padding: 2em 2em 20em;
 }
 .more-bg {
   position: absolute;
@@ -300,6 +300,76 @@ img {
 .more__btn:hover {
   background-color: hsl(0, 0%, 98%);
   color: hsl(270, 9%, 17%);
+}
+
+.footer {
+  position: relative;
+  padding: 6em 2em;
+  z-index: 0;
+  background-color: hsl(0, 0%, 98%);
+  overflow: hidden;
+}
+.footer hr {
+  opacity: 0.5;
+  margin: 6em 0;
+}
+.footer-bg {
+  position: absolute;
+  z-index: -1;
+}
+.footer-bg-desktop {
+  display: none;
+}
+.footer-bg-mobile {
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.footer__head {
+  text-align: center;
+}
+.footer__social {
+  margin-block-start: 2.5em;
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+}
+.footer__social .fa-brands {
+  text-decoration: none;
+  color: #837D88;
+  font-size: 2.8rem;
+  transition: color 0.3s;
+}
+.footer__social .fa-brands:hover {
+  color: hsl(270, 9%, 17%);
+}
+.footer__body {
+  text-align: center;
+  text-transform: uppercase;
+}
+.footer__list {
+  list-style-type: none;
+  margin: 4em 0;
+  letter-spacing: 2px;
+  font-family: "Karla", sans-serif;
+}
+.footer__text {
+  display: block;
+  margin-block-end: 2em;
+  font-size: 1.6rem;
+  color: hsl(273, 4%, 51%);
+  font-weight: 400;
+}
+.footer__link {
+  display: block;
+  padding: 0.5em 0;
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: hsl(270, 9%, 17%);
+  font-weight: 700;
+}
+.footer__link:hover {
+  text-decoration: underline;
 }
 
 .nav__burger-btn[aria-expanded=true] .nav__burger-btn-bar--top {
@@ -398,6 +468,23 @@ img {
   .more__title {
     font-size: 4.2rem;
   }
+  .footer__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer__social {
+    margin: 0;
+  }
+  .footer__body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .footer__list {
+    width: 50%;
+  }
 }
 @media (700px <= width) {
   .nav__links-mobile {
@@ -494,6 +581,9 @@ img {
     top: 0;
     right: 0;
   }
+  .footer__list {
+    width: 33%;
+  }
 }
 @media (992px <= width) {
   .header {
@@ -561,10 +651,13 @@ img {
     margin: 1em 0 0.8em;
   }
   .more__box {
-    padding: 7em;
+    padding: 6em 8em;
   }
   .more__title {
     font-size: 4.8rem;
+  }
+  .footer__list {
+    width: 25%;
   }
 }
 @media (1200px <= width) {
@@ -588,5 +681,6 @@ img {
   }
   .more__title {
     font-size: 5.2rem;
+    line-height: 55px;
   }
 }/*# sourceMappingURL=style.css.map */

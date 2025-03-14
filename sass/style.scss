@@ -239,7 +239,7 @@ img {
 
 .cards {
     position: relative;
-    padding: 12em 0;
+    padding: 12em 0 10em;
 
     &__title {
         position: relative;
@@ -287,7 +287,7 @@ img {
 // MORE SECTION
 
 .more {
-    padding: 2em;
+    padding: 2em 2em 20em;
 
     &-bg {
         position: absolute;
@@ -337,6 +337,87 @@ img {
     }
   
 }
+
+
+// FOOTER SECTION
+
+
+.footer {
+    position: relative;
+    padding: 6em 2em;
+    z-index: 0;
+    background-color: $veryLightGray;
+    overflow: hidden;
+
+    hr {
+        opacity: 0.5;
+        margin: 6em 0;
+    }
+    &-bg {
+        position: absolute;
+        z-index: -1;
+    }
+    &-bg-desktop {
+        display: none;
+    }
+    &-bg-mobile {
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    &__head {
+        text-align: center;
+    }
+    &__social {
+        margin-block-start: 2.5em;
+        display: flex;
+        justify-content: center;
+        gap: 1.5em;
+
+        .fa-brands {
+            text-decoration: none;
+            color: #837D88;
+            font-size: 2.8rem;
+            transition: color .3s;
+
+            &:hover {
+                color: $veryDarkViolet;
+            }
+        }
+        
+    }
+
+    &__body {
+        text-align: center;
+        text-transform: uppercase;
+    }
+    &__list {
+        list-style-type: none;
+        margin: 4em 0;
+        letter-spacing: 2px;
+        font-family: $bodyFf;
+    }
+    &__text {
+        display: block;
+        margin-block-end: 2em;
+        font-size: 1.6rem;
+        color: $grayedViolet;
+        font-weight: 400;
+    }
+    &__link {
+        display: block;
+        padding: 0.5em 0;
+        font-size: 1.6rem;
+        text-decoration: none;
+        color: $veryDarkViolet;
+        font-weight: 700;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
 
 // ARIA
 .nav__burger-btn[aria-expanded='true'] .nav__burger-btn-bar--top {
@@ -455,6 +536,27 @@ img {
             font-size: 4.2rem;
         }
     }
+
+    .footer {
+        &__head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        &__social {
+            margin: 0;
+        }
+
+        &__body {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        &__list {
+            width: 50%;
+        }
+    }
 }
 
 
@@ -568,6 +670,12 @@ img {
             right: 0;
         }
     }
+    .footer {
+
+        &__list {
+            width: 33%;
+        }
+    }
 }
 
 @media(992px <= width) {
@@ -643,10 +751,16 @@ img {
     }
     .more {
         &__box {
-            padding: 7em;
+            padding: 6em 8em;
         }
         &__title {
             font-size: 4.8rem;
+        }
+    }
+
+    .footer {
+        &__list {
+            width: 25%;
         }
     }
 
@@ -681,6 +795,7 @@ img {
     .more {
         &__title {
             font-size: 5.2rem;
+            line-height: 55px;
         }
     }
   
